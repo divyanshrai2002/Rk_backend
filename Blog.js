@@ -161,7 +161,6 @@ router.delete('/delete-post/:id', verifyToken, async (req, res) => {
         res.status(200).json({
             status: true,
             message: "Blog deleted successfully",
-            data: removed
         });
     } catch (err) {
         res.status(500).json({
