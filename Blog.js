@@ -48,11 +48,13 @@ router.get('/single-blog/:id', verifyApiKey, async (req, res) => {
     try {
 
         const id = req.params.id;
+        console.log(id)
 
         const blogData = await db.query(
             'SELECT * FROM blog WHERE id = ?',
             [id]
         );
+
 
         if (blogData[0].length === 0) {
             return res.status(404).json({
@@ -66,7 +68,7 @@ router.get('/single-blog/:id', verifyApiKey, async (req, res) => {
             'SELECT id, name, comment, created_at FROM comments WHERE blog_id = ? ORDER BY id DESC',
             [id]
         );
-        t
+
         const blog = blogData[0][0];
 
         // attach comments
